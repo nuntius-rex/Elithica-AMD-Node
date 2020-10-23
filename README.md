@@ -8,7 +8,7 @@
 
 ## Explanation
 
-<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where modularity is the main concern. Elithica can also be helpful for students and designers. Many may have ample experience in HTML, CSS, Bootstrap and jQuery, but may not have excessive programming experience, and want to use a SPA (Single Page Application) structure. These will find more in common with their current skill set. With Elithica, you can do as much or as little as you want!</p>
+<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where modularity is the main concern. Elithica can also be helpful for students and designers. Many may have ample experience in HTML, CSS, Bootstrap and jQuery, but may not have excessive programming experience, and yet want to use a SPA (Single Page Application) structure. These will find more in common with their current skill set. With Elithica, you can do as much or as little as you want!</p>
 
 ## Technology
 
@@ -48,6 +48,17 @@ http://localhost/3000
   </ul>
 </p>
 
+<p>The NodeJS core libraries that will be installed are are:
+  <ul>
+    <li>Express</li>
+    <li>Express ES6 string template engine</li>
+    <li><a href="https://www.npmjs.com/package/mvccreate">mvccreate</a> (also by me, optional dev dependency I used to make the default structure)</li>
+    <li><a href="https://www.npmjs.com/package/nodemon">nodemon</a> (optional dev dependency I use during development)</li>
+    <li>Note: To remove either of the dev dependencies, edit package.json</li>
+  </ul>
+</p>
+
+
 ### Modules
 
 <p>The Elithica mode of building web structures involves a simple modular approach.</p>
@@ -70,7 +81,7 @@ http://localhost/3000
 
 ```
 <header>
-  <h1>Elithica (AMD version)</h1>
+  <h1>Elithica (NodeJS version)</h1>
 </header>
 ```
 
@@ -127,7 +138,7 @@ http://localhost/3000
 
 <p>How does server-side templating work? Templating is a technique of doing inline value replacement into a predefined structure.
   With Elithica, this is our base index.html file. The template variable declarations are made serverside via the homeController
-  in our case, homeController.js. This is made possible by the templating engine assigned to Express in main.js called es6Renderer.
+  in our case, homeController.js. This is made possible by the templating engine assigned to Express in main.js called es6Renderer (Express ES6 string template engine).
 </p>
 
 <p>For running with templating, the next question one will need to contemplate is, "Do I want to share the template variables with the front-end JavaScript?" If so, there is a unique technique for that. Templating features can be injected into the template (index.html):
