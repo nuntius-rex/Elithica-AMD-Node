@@ -42,16 +42,16 @@ http://localhost/3000
 
 <p>Elithica uses the following core libraries:
   <ul>
-    <li>Knockout JS</li>
-    <li>jQuery</li>
-    <li>Bootstrap</li>
+    <li><a href="https://knockoutjs.com/">Knockout JS</a></li>
+    <li><a href="https://jquery.com/">jQuery</a></li>
+    <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
   </ul>
 </p>
 
 <p>The NodeJS core libraries that will be installed are are:
   <ul>
-    <li>Express</li>
-    <li>Express ES6 string template engine</li>
+    <li><a href="https://www.npmjs.com/package/express">Express</a></li>
+    <li><a href="https://www.npmjs.com/package/express-es6-template-engine">Express ES6 string template engine</a></li>
     <li><a href="https://www.npmjs.com/package/mvccreate">mvccreate</a> (also by me, optional dev dependency I used to make the default structure)</li>
     <li><a href="https://www.npmjs.com/package/nodemon">nodemon</a> (optional dev dependency I use during development)</li>
     <li>Note: To remove either of the dev dependencies, edit package.json</li>
@@ -64,7 +64,6 @@ http://localhost/3000
 <p>The Elithica mode of building web structures involves a simple modular approach.</p>
 
 <p>The SPA application is built in components made of two files. First, an html template file, and second, a JavaScript view model.</p>
-
 
 <p>The Header you see in the preview above in red is built as follows.</p>
 
