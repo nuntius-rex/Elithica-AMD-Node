@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ELITHICA EXAMPLE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="css/themes/sandstone/bootstrap.css" id="bootstrapTheme" media="all">
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/global.css" media="all">
+    <link rel="icon" type="image/ico" href="img/logo/elithica-favicon-16x16.png">
+    <base href="elithica">
+  </head>
+  <!--
+    NodeJS: If you are using the template loading methodology the core HTML page is served from
+    the views folder. If you want to run the library like a standard server without templating
+    features, you can change the name of this file to index.html, and remove the express
+    view directly declaration in main.js. Then, update your homeComponent.js or remove it from routes.
+
+    All front-end loading is sent through a component called body
+    See js/app/comps/body to see the component nesting therein.
+  -->
+
+
+
+  <body data-bind="component: { name: 'body' }">
+
+  <script type="text/javascript" data-main="js/app/sys/config/init/init.js" src="js/require.js"></script>
+  </body>
+</html>

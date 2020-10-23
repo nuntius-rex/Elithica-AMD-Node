@@ -1,0 +1,77 @@
+
+body{
+
+}
+
+a{
+  color: #E31836;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #E31836 !important;
+}
+
+.navbar-default {
+    background-color: #292f33;
+}
+
+.navbar-brand{
+  font-size: 8pt;
+}
+
+header{
+  min-width:100%;
+  margin-top:50px !important;
+  background-color: #E31836;
+  color:#FFFFFF;
+  padding-left: 2%;
+}
+
+
+section{
+  /*border:solid 1px #C0C0C0;*/
+  max-width:100%;
+  margin:0 auto;
+  display: flex;
+  flex-wrap: wrap; /* disable flex-basis to enable the wrap*/
+}
+
+.column{
+  border:solid 1px;
+  margin:10px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.sideColumn{
+  max-width:250px;
+}
+
+footer{
+  min-width:100%;
+  margin-top:50px !important;
+  background-color: #E31836;
+  color:#FFFFFF;
+  padding-left: 2%;
+  position: fixed;
+  bottom: 0;
+}
+
+main{
+  padding-bottom: 30px;
+}
+main section{
+  height: 700px;
+}
+
+
+#NodeInfo{
+  margin-left: auto;
+      margin-right: auto;
+      width: 97%;
+      min-height: 200px;
+      border: solid 1px;
+      padding: 10px;
+
+}

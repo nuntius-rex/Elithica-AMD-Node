@@ -1,0 +1,176 @@
+/*
+  Creating a body component allows you to separate the code and sub components
+  from the index.html. This proves efficient in more complext structures.
+*/
+<style media="all" data-bind="text: bodyCSS" scoped></style>
+<nav>
+  <div data-bind="component: { name: 'navBar' }"></div>
+  <div data-bind="component: { name: 'header' }"></div>
+</nav>
+<div data-bind="component: { name: 'loading' }"></div>
+<main>
+
+  <h1><img src="img/logo/elithica-logo.png"> ELITHICA EXAMPLE</h1>
+
+  <h2>Introduction</h2>
+
+  <p>Elithica is a minimalistic front-end module system designed to allow for quick modular development in common languages.</p>
+
+  <p>You will find that the system uses common conventions which can be helpful when learning.</p>
+
+  <p>Elithica uses the following core libraries:
+    <ul>
+      <li>Knockout</li>
+      <li>Require.JS</li>
+      <li>jQuery - </li>
+      <li>Bootstrap</li>
+    </ul>
+  </p>
+
+  <h2>Modules</h2>
+
+  <p>The Elithica mode of building web structures involves a simple modular approach.</p>
+
+  <p>The SPA application is built in components made of two files. First, an html template file, and second, a JavaScript view model.
+  </p>
+  <p>The Header you see above in red is built as follows.</p>
+
+  <p>Here are example names:
+    <ul>
+      <li>headerCT.html</li>
+      <li>headerVM.js</li>
+    </ul>
+  </p>
+
+  <p>
+    The headerCT.html looks as follows:
+  </p>
+
+  <p>
+    <code>
+      <pre>
+
+        &lt;header&gt;
+          &lt;h1>Elithica Example&lt;/h1&gt;
+        &lt;/header&gt;
+      </pre>
+  </code>
+  </p>
+
+  <p>
+    The headerVM.js looks as follows. The module pattern here is AMD (Asynchronous Module Definition):
+  </p>
+
+
+  <p>
+    <code>
+      <pre>
+
+        define(['knockout'], function(ko) {
+            return function headerViewModal() {
+                console.log("Header VM loaded!");
+                //Your custom code here.
+
+          } //End VM function
+        }); //End Module
+
+      </pre>
+  </code>
+  </p>
+
+
+  <p>
+    In our example, the component is identified to the system in initBaseCompModel.js.
+    Here, we just provide an object to the system as follows:
+  </p>
+
+  <p>
+    <code>
+      <pre>
+
+        {
+            name: "header",
+            model: "headerVM",
+            template: "headerCT.html",
+            path: "app/comps/headers/",
+            active: "true"
+        }
+      </pre>
+  </code>
+  </p>
+
+  <p>
+    Once the module is defined, it is now ready to use.
+    The headerCT.html is for your HTML code. The templating features use KnockoutJS conventions. So to include your code,
+    in the page, you use the data-bind methodology.
+  </p>
+
+  <p>
+    <code>
+      <pre>
+
+          &lt;div data-bind="component: { name: 'headerWidget' }"&gt;&lt;/div&gt;
+      </pre>
+  </code>
+  </p>
+
+  <p>The example widget below is built with that same methodology. Look in js/app/comps/widgets to study the code. </p>
+
+  <div data-bind="component: { name: 'wagesWidget' }"></div>
+
+  <h2>NodeJS Notes:</h2>
+
+  <p>Running Elithica in NodeJS presents some interesting possibilities and options.</p>
+
+  <h3>File Locations:</h3>
+
+  <p>One can run the Elithica structure all directly from a predefined "public" folder or move the index.html to a "views" folder to invoke templating. So really the option becomes, do I want to run a service-based application? Then run purely from public. Do I want SPA server-side templating or both? Run from view.</p>
+
+  <h3>Templating:</h3>
+
+  <p>How does templating work? Templating is a technique of doing inline value replacement into a predefined structure.
+    With Elithica, this is our base index.html file. The template variable declarations are made serverside via the homeController
+    in our case, homeController.js. This is made possible by the templating engine assigned to Express in main.js called es6Renderer.
+  </p>
+
+  <p>For running with templating, the next question one will need to contemplate is, "Do I want to share the template variables with the front-end JavaScript?" If so, there is a unique technique for that. Templating features can be injected into the template (index.html):
+  </p>
+  <p>
+    <code>
+      $&#123;templateObj.title&#125;<br>
+      $&#123;templateObj.version&#125;<br>
+      $&#123;templateObj.rdir&#125;<br>
+    </code>
+  </p>
+  <p>
+    Result:<br>
+    <!-- The above syntax like ${templateObj.title} will only work directly in index.html.
+    Inside of modules, populate from the view model, in this case bodyVM.js: -->
+    <div id="templateObjResults">
+      <!-- populated from bodyVM.js -->
+    </div>
+  </p>
+
+  <p>
+    Each new variable you feed to the template on the server side can also be variablized for the front end to use.
+    Note the usage of single quotes rather than template literals. See an object example in index.html.
+  </p>
+  <p>
+    <code>
+      var template_title='$&#123;template_vars.title&#125;';
+    </code>
+  </p>
+
+  <h3>Services:</h3>
+
+  <p>
+    One will note, that in the js/app/comps/config/init.js file, the system makes an AJAX call on load. This can be made optional, see the (<a href="https://github.com/nuntius-rex/elithica-amd.git">structure only version</a>) to see how I've done this. Note that the appConfig object is needed, so be careful if you decided to disable, so that you have appConfig populated (see the top of the init file for the simple default).
+  </p>
+  <p>
+    Neverthless, the call has been added to show that you can also get configurations or date by calling the server and asking for them. Thus, you can make enhancements to the api as needed. Calls to the API doesn't have to be just on loading, you can make service calls from within your modules, or make a library to use for regular calls.
+  </p>
+  <p>
+    What is significant when using both templating and services is that you have a base load of data that can be sent and then one can send data back and forth to the server as well. One use case where this may be of significance is if one chooses to use JWT encryption. A serverside key could be generated with a time stamp and then encrypted and send forward where it is assigned to a session variable. Thereafter, it could then be utilized for transactional authentication.
+  </p>
+
+</main>
