@@ -45,7 +45,6 @@ http://localhost/3000
     <li>Knockout JS</li>
     <li>jQuery</li>
     <li>Bootstrap</li>
-    <li>Font Awesome</li>
   </ul>
 </p>
 
