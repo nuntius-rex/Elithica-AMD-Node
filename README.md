@@ -144,9 +144,11 @@ http://localhost:3000
 <p>For running with templating, the next question one will need to contemplate is, "Do I want to share the template variables with the front-end JavaScript?" If so, there is a unique technique for that. Templating features can be injected into the template (index.html):
 </p>
 ```
-    $&#123;templateObj.title&#125;<br>
-    $&#123;templateObj.version&#125;<br>
-    $&#123;templateObj.rdir&#125;<br>
+
+    ${templateObj.title};<br>
+    ${templateObj.version};<br>
+    ${templateObj.rdir};<br>
+
 ```
 <p>
   Result:<br>
@@ -162,7 +164,9 @@ http://localhost:3000
   Note the usage of single quotes rather than template literals. See an object example in index.html.
 </p>
 ```
-    var template_title='$&#123;template_vars.title&#125;';
+
+    var template_title='{template_vars.title}';
+
 ```
 
 ### Services:
