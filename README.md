@@ -153,17 +153,7 @@ http://localhost:3000
 ```
 
 <p>
-  Result:<br>
-  <!-- The above syntax like ${templateObj.title} will only work directly in index.html.
-  Inside of modules, populate from the view model, in this case bodyVM.js: -->
-  <div id="templateObjResults">
-    <!-- populated from bodyVM.js -->
-  </div>
-</p>
-
-<p>
-  Each new variable you feed to the template on the server side can also be variablized for the front end to use.
-  Note the usage of single quotes rather than template literals. See an object example in index.html.
+  Each new variable you feed to the template on the server side can also be variablized for the front end to use in modules as well. Note the usage of single quotes rather than template literals. See an object example in index.html.
 </p>
 
 ```
