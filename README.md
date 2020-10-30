@@ -56,7 +56,7 @@ http://localhost:3000
     <li><a href="https://www.npmjs.com/package/express">Express</a></li>
     <li><a href="https://www.npmjs.com/package/express-es6-template-engine">Express ES6 string template engine</a></li>
     <li><a href="https://www.npmjs.com/package/mvccreate">mvccreate</a> (also by me, optional dev dependency I used to make the default structure)</li>
-    <li><a href="https://www.npmjs.com/package/nodemon">nodemon</a> (optional dev dependency I use during development)</li>
+    <li><a href="https://www.npmjs.com/package/nodemon">nodemon</a> (optional dev dependency I use during development, you may need to install globally for it to work on Linux. If you wish to use it for npm start, change your package.json script start reference to 'nodemon main.js')</li>
     <li>Note: To remove either of the dev dependencies, edit package.json</li>
   </ul>
 </p>
@@ -179,4 +179,4 @@ http://localhost:3000
 
 #### Service Security
 
-<p>If your are planning to do more secure transactional types of interactions with the server, such as logins, etc. I recommend setting up JWT.</p>
+<p>If your are planning to do more secure transactional types of interactions with the server, such as logins, etc. I recommend setting up JWT on the server-side. I may add an example of this in the future.</p>
