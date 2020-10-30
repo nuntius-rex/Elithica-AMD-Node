@@ -36,7 +36,8 @@ npm install
 Open the following location with your browser:
 
 ```
-http://localhost/3000
+npm start
+http://localhost:3000
 ```
 <p>You will find that the system uses common conventions which can be helpful when learning.</p>
 
