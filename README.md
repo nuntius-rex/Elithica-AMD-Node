@@ -8,7 +8,7 @@
 
 ## Explanation
 
-<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where modularity is the main concern. Elithica can also be helpful for students and designers. Many may have ample experience in HTML, CSS, Bootstrap and jQuery, but may not have excessive programming experience, and yet want to use a SPA (Single Page Application) structure. These will find more in common with their current skill set. With Elithica, you can do as much or as little as you want!</p>
+<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where modularity is the main concern. Elithica can also be helpful for students and designers. Many may have ample experience in HTML, CSS, Bootstrap and jQuery, but may not have excessive programming experience, and yet want to use a SPA (Single Page Application) structure. These will find more in common with their current skill set. With Elithica, you can do as much or as little as you want! Use the module setup for modular jQuery components or use the more advanced KnockoutJS structure to make reactive components. Two modules have been included to demonstrate both concepts.</p>
 
 ## Technology
 
@@ -18,14 +18,16 @@
 <p>The NodeJS MVC structure was built using a Node tool I created called MVC Create available in the following locations:</p>
 <a href="https://github.com/nuntius-rex/node-mvc-create">https://github.com/nuntius-rex/node-mvc-create</a><br>
 <a href="https://www.npmjs.com/package/mvccreate">https://www.npmjs.com/package/mvccreate</a>
+</p>
 
-
-
+<p>
 ![Preview](/public/img/preview.png?raw=true "Preview")
+</p>
+
 
 ## Install
 
-Clone this repo and run NPM:
+Clone this repo and run NPM install to install the Node modules:
 
 ```
 git clone https://github.com/nuntius-rex/elithica-amd
@@ -33,7 +35,7 @@ npm install
 ```
 ### Running
 
-Open the following location with your browser:
+Run NPM start and then open the following location with your browser:
 
 ```
 npm start
@@ -153,7 +155,7 @@ http://localhost:3000
 ```
 
 <p>
-  Each new variable you feed to the template on the server side can also be variablized for the front end to use in modules as well. Note the usage of single quotes rather than template literals. See an object example in index.html.
+  Each new variable you feed to the template on the server side can also be variablized for the front end to use in modules as well. In general, you would probably want to just capture the entire object variable, but you can parse it out for your needs. Note the usage of single quotes rather than template literals. See an object example in index.html.
 </p>
 
 ```
@@ -173,3 +175,8 @@ http://localhost:3000
 <p>
   What is significant when using both templating and services is that you have a base load of data that can be sent and then one can send data back and forth to the server as well. One use case where this may be of significance is if one chooses to use JWT encryption. A serverside key could be generated with a time stamp and then encrypted and send forward where it is assigned to a session variable. Thereafter, it could then be utilized for transactional authentication.
 </p>
+
+
+#### Service Security
+
+<p>If your are planning to do more secure transactional types of interactions with the server, such as logins, etc. I recommend setting up JWT.</p>
