@@ -143,13 +143,15 @@ http://localhost:3000
 
 <p>For running with templating, the next question one will need to contemplate is, "Do I want to share the template variables with the front-end JavaScript?" If so, there is a unique technique for that. Templating features can be injected into the template (index.html):
 </p>
-```
-
-    ${templateObj.title};<br>
-    ${templateObj.version};<br>
-    ${templateObj.rdir};<br>
 
 ```
+
+    ${templateObj.title};
+    ${templateObj.version};
+    ${templateObj.rdir};
+
+```
+
 <p>
   Result:<br>
   <!-- The above syntax like ${templateObj.title} will only work directly in index.html.
@@ -163,6 +165,7 @@ http://localhost:3000
   Each new variable you feed to the template on the server side can also be variablized for the front end to use.
   Note the usage of single quotes rather than template literals. See an object example in index.html.
 </p>
+
 ```
 
     var template_title='{template_vars.title}';
