@@ -21,7 +21,7 @@ app.set('view engine', 'html');
 //Dynamically setup get() routes to all controllers:
 for(let i=0;i<routes.length;i++){
 
-  console.log(routes[i]);
+  //console.log(routes[i]);
 
   let controller=routes[i].controller; //This returns a controller function
   if(routes[i].type=="get"){

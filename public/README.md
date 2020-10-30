@@ -3,7 +3,7 @@ A minimalistic front-end module system designed to allow for quick modular devel
 
 ## Explanation
 
-<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where a larger library/framework is not needed and would probably be more trouble than desired. Elithica can also be helpful for students. Likewise designers, who may have ample experience in HTML, CSS, Bootstrap and jQuery, but not have excessive programming experience, who want to use a SPA (Single Page Application) structure, will find more in common with their current skill set. With Elithica, you can do as much or as little as you want!</p>
+<p>The Elithica module system is designed with quick, simple modularity in mind. It is useful in such cases where a larger library/framework is not needed and would probably be more trouble than desired. Elithica can also be helpful for students. Likewise designers, who may have ample experience in HTML, CSS, Bootstrap and jQuery, but not have excessive programming experience, who want to use a SPA (Single Page Application) structure, will find more in common with their current skill set. With Elithica, you can do as much or as little as you want! Your modules can be in jQuery, plain JavaScript or Knockout.</p>
 
 ## Technology
 
@@ -11,24 +11,31 @@ A minimalistic front-end module system designed to allow for quick modular devel
 </p>
 
 
+<p>The NodeJS MVC structure was built using a Node tool I created called MVC Create available in the following locations:
+
+https://github.com/nuntius-rex/node-mvc-create <br>
+https://www.npmjs.com/package/mvccreate <br>
+
+</p>
+
 ![Preview](/img/preview.png?raw=true "Preview")
 
 ## Install
 
-Clone this repo into a server directory:
+Clone this repo and run NPM install:
 
 ```
 git clone https://github.com/nuntius-rex/elithica-amd
+npm install
 ```
-
-Note: The application will fail if opened directly due to modern browser CORS (Cross Origin Resource Sharing) restrictions.
 
 ### Running
 
 Open the location on your server. For example:
 
 ```
-http://localhost/elithica
+npm start
+http://localhost:3000
 ```
 <p>You will find that the system uses common conventions which can be helpful when learning.</p>
 
@@ -39,6 +46,17 @@ http://localhost/elithica
     <li>Bootstrap</li>
   </ul>
 </p>
+
+<p>The NodeJS core libraries that will be installed are are:
+  <ul>
+    <li><a href="https://www.npmjs.com/package/express">Express</a></li>
+    <li><a href="https://www.npmjs.com/package/express-es6-template-engine">Express ES6 string template engine</a></li>
+    <li><a href="https://www.npmjs.com/package/mvccreate">mvccreate</a> (also by me, optional dev dependency I used to make the default structure)</li>
+    <li><a href="https://www.npmjs.com/package/nodemon">nodemon</a> (optional dev dependency I use during development)</li>
+    <li>Note: To remove either of the dev dependencies, edit package.json</li>
+  </ul>
+</p>
+
 
 ### Modules
 
@@ -62,7 +80,7 @@ http://localhost/elithica
 
 ```
 <header>
-  <h1>Elithica (AMD version)</h1>
+  <h1>Elithica (NodeJS version)</h1>
 </header>
 ```
 
@@ -109,15 +127,53 @@ http://localhost/elithica
     <div data-bind="component: { name: 'header' }"></div>
 ```
 
-### SPA (Single Page Application) Routing Pages
+## NodeJS Notes:
 
-<p>This is a module system that is simply devoted to modularity. So it is best paired with NodeJS and Express (example forthcoming). This enables the routing to be handled through the Express middle-ware rather than trying to reinvent the wheel.</p>
+<p>Running Elithica in NodeJS presents some interesting possibilities and options.</p>
 
-<p>However, I have used it with a standard server configuration on Apache and a PHP back-end. The methodology required is beyond this example. Yet the scenario mandates that you configure Apache with an .htaccess file (see code below) to direct all traffic to the index.html by default. Then, you intercept the url request, parse it and then manage component loading and data request accordingly. Again, much more complex that handling with NodeJS.  
+### File Locations:
+
+<p>One can run the Elithica structure all directly from a predefined "public" folder or move the index.html to a "views" folder to invoke templating. So really the option becomes, do I want to run a service-based application? Then run purely from public. Do I want SPA server-side templating or both? Run from view.</p>
+
+### Server-Side Templating:
+
+<p>How does server-side templating work? Templating is a technique of doing inline value replacement into a predefined structure.
+  With Elithica, this is our base index.html file. The template variable declarations are made serverside via the homeController
+  in our case, homeController.js. This is made possible by the templating engine assigned to Express in main.js called es6Renderer (Express ES6 string template engine).
 </p>
 
+<p>For running with templating, the next question one will need to contemplate is, "Do I want to share the template variables with the front-end JavaScript?" If so, there is a unique technique for that. Templating features can be injected into the template (index.html):
+</p>
 ```
-DirectoryIndex index.html
-FallbackResource index.html
+    $&#123;templateObj.title&#125;<br>
+    $&#123;templateObj.version&#125;<br>
+    $&#123;templateObj.rdir&#125;<br>
+```
+<p>
+  Result:<br>
+  <!-- The above syntax like ${templateObj.title} will only work directly in index.html.
+  Inside of modules, populate from the view model, in this case bodyVM.js: -->
+  <div id="templateObjResults">
+    <!-- populated from bodyVM.js -->
+  </div>
+</p>
 
+<p>
+  Each new variable you feed to the template on the server side can also be variablized for the front end to use.
+  Note the usage of single quotes rather than template literals. See an object example in index.html.
+</p>
 ```
+    var template_title='$&#123;template_vars.title&#125;';
+```
+
+### Services:
+
+<p>
+  One will note, that in the js/app/comps/config/init.js file, the system makes an AJAX call on load. This can be made optional, see the (<a href="https://github.com/nuntius-rex/elithica-amd.git">structure only version</a>) to see how I've done this. Note that the appConfig object is needed, so be careful if you decided to disable, so that you have appConfig populated (see the top of the init file for the simple default).
+</p>
+<p>
+  Neverthless, the call has been added to show that you can also get configurations or date by calling the server and asking for them. Thus, you can make enhancements to the api as needed. Calls to the API doesn't have to be just on loading, you can make service calls from within your modules, or make a library to use for regular calls.
+</p>
+<p>
+  What is significant when using both templating and services is that you have a base load of data that can be sent and then one can send data back and forth to the server as well. One use case where this may be of significance is if one chooses to use JWT encryption. A serverside key could be generated with a time stamp and then encrypted and send forward where it is assigned to a session variable. Thereafter, it could then be utilized for transactional authentication.
+</p>

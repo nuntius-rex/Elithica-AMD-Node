@@ -1,0 +1,32 @@
+<style media="all" data-bind="text: wagesWidgetCSS" scoped></style>
+
+<form id="wagesWidget">
+
+  <h2>Wages Widget</h2>
+
+  <p><small>(knockout version)</small></p>
+
+  <p>
+    <label for="">Rate:</label>
+    <input id="rate" type="number" data-bind="value: wagesRate">
+  </p>
+
+  <p>
+    <label for="hours">Hours:</label>
+    <input id="hours" type="number" data-bind="value: wagesHours">
+  </p>
+
+  <p>
+    <label for="">Weeks:</label>
+    <input id="weeks" type="number" data-bind="value: wagesWeeks">
+  </p>
+
+
+  <p>
+    <button type="button" id="calculateWagesbutton" data-bind="click: calculateWages">Calculate</button>
+  </p>
+
+  <div id="WagesResult" data-bind="text: wagesResult">
+    <!-- results-->
+  </div>
+</form>
