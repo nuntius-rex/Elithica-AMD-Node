@@ -2,7 +2,7 @@ const mysql = require('promise-mysql');
 
 const dbConfig = {
         user: "root",
-        password: "1lex2admit",
+        password: "PASSWORD",
         database: "elithica",
         host: "localhost",
         connectionLimit: 10
