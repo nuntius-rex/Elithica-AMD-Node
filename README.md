@@ -1,5 +1,8 @@
 # Elithica NodeJS
 
+<p style="color:red">NOTE: THIS REPO IS RETAINED FOR HISTORCAL REASONS AS PRE-WORK HISTORY OF THE OFFICIAL ELITHICA.<br>
+TO DOWNLOAD CURRENT VERSIONS GET OUR <a href="https://www.npmjs.com/package/@elithica/cli" target="_blank">ELITHICA CLI</a>.</p>
+
 <p>Elithica and NodeJS Full Stack:</p>
 
 <p>Elithica is a minimalistic front-end module system designed to allow for quick modular development in common languages.</p>
